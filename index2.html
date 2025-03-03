@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Bulb Toggle</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .light {
+            width: 300px;
+            height: 200px;
+            background-image: url('green.jpg'); /* 전구 꺼진 상태 */
+            background-size: cover;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .light img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transition: opacity 1s ease;
+        }
+
+        .light img.on {
+            opacity: 1;
+        }
+
+        .light img.off {
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Light on your life</h1>
+    <div class="light">
+        <img src="white.jpg" class="on" style="opacity: 0;">
+        <img src="green.jpg" class="off" style="opacity: 1;">
+    </div>
+
+    <script>
+        $('.light').hover(
+            function() {
+                $(this).find('.on').css('opacity', 1);  // 마우스를 올렸을 때 전구 켜짐
+                $(this).find('.off').css('opacity', 0); // 전구 꺼짐 이미지 숨김
+            }, 
+            function() {
+                $(this).find('.on').css('opacity', 0);  // 마우스를 내렸을 때 전구 꺼짐
+                $(this).find('.off').css('opacity', 1); // 전구 꺼짐 이미지 나타남
+            }
+        );
+    </script>
+
+</body>
+</html>
